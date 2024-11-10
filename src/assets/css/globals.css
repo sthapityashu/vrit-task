@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .fourth-element-padding-0 > :nth-child(3n-2) {
+    padding-left: 0;
+  }
+}
+
+body {
+  min-width: 360px;
+  max-width: 2000px;
+  font-family: Poppins, sans-serif;
+}
+
+/* When you dont need to display scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin Scrollbar Start */
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  scrollbar-gutter: stable both-edges;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  border-radius: 2rem;
+  /* background: #b5b5b5; */
+  background: #fff;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #4339f2;
+  border-radius: 100vh;
+  border: 0.5px solid #4339f2;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3d34ee;
+}
+/* Thin Scrollbar End */
