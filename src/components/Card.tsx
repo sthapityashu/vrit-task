@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { RootHeader } from "@/assets/views/layouts/root";
 import { useCart } from "@/context/useCart";
+import { galleryImages } from "@/utils/data/gallery";
 
 type CardSchema = {
   image: string;
@@ -12,35 +12,28 @@ type CardSchema = {
 };
 
 const Card = (props: CardSchema) => {
+  // Props
   const { image, title, descp, price } = props;
-  const [mainImage, setMainImage] = useState(image);
+
+  // State
   const [modalImage, setModalImage] = useState<string | null>(null);
+
+  // Context
   const { addToCart } = useCart();
 
+  // Default Value
   const id = 1;
-
-  // Sample gallery images
-  const galleryImages = [
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/primary/ProductShowcasesampleimages/JPEG/Product+Showcase-1.jpg",
-  ];
 
   // Function to close the modal
   const closeModal = () => setModalImage(null);
 
   return (
     <div>
-      {/* <RootHeader cartCount={0} cartItems={} /> */}
-
       <div className="bg-white mx-4 p-6 rounded shadow-lg flex flex-col md:flex-row gap-10">
         {/* Main Image with magnify effect */}
         <div className="relative overflow-hidden w-full h-[500px] md:w-[1000px]">
           <Image
-            src={mainImage}
+            src={image}
             alt="Main product image"
             width={500}
             height={500}
